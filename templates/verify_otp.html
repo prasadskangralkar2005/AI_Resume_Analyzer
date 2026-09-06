@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Verify Email | ResumeAI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(139, 92, 246, 0.12), transparent 35%),
+                #0b0b0f;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+
+        .verify-container {
+            width: 100%;
+            max-width: 470px;
+        }
+
+        .verify-card {
+            background: #101015;
+            border: 1px solid #292330;
+            border-radius: 20px;
+            padding: 42px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-icon {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            font-size: 27px;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 25px;
+            color: #ffffff;
+        }
+
+        .logo p {
+            margin: 9px 0 0;
+            color: #8f8ba0;
+            font-size: 13px;
+        }
+
+        .verify-message {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .verify-message h2 {
+            margin: 0 0 10px;
+            font-size: 20px;
+            color: #f4f1fa;
+        }
+
+        .verify-message p {
+            margin: 0;
+            color: #8f8ba0;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .email-display {
+            margin-top: 12px;
+            color: #a78bfa;
+            font-weight: 600;
+            word-break: break-word;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 9px;
+            color: #c4bfd2;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .otp-input {
+            width: 100%;
+            height: 58px;
+            border-radius: 12px;
+            border: 1px solid #30283b;
+            background: #121217;
+            color: #ffffff;
+            text-align: center;
+            font-size: 25px;
+            font-weight: 700;
+            letter-spacing: 9px;
+            outline: none;
+            padding-left: 9px;
+        }
+
+        .otp-input:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.10);
+        }
+
+        .otp-input::placeholder {
+            color: #514c5b;
+            letter-spacing: 5px;
+        }
+
+        .verify-button {
+            width: 100%;
+            height: 48px;
+            border: none;
+            border-radius: 11px;
+            background: #8b5cf6;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .verify-button:hover {
+            background: #7c4fe8;
+            transform: translateY(-1px);
+        }
+
+        .resend-section {
+            text-align: center;
+            margin-top: 22px;
+            padding-top: 22px;
+            border-top: 1px solid #292330;
+        }
+
+        .resend-section p {
+            margin: 0 0 12px;
+            color: #777282;
+            font-size: 12px;
+        }
+
+        .resend-button {
+            width: 100%;
+            height: 44px;
+            border-radius: 10px;
+            border: 1px solid #30283b;
+            background: #15121d;
+            color: #a78bfa;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .resend-button:hover {
+            border-color: #8b5cf6;
+            background: #191522;
+        }
+
+        .alert {
+            padding: 12px 14px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .alert-error {
+            background: rgba(239, 68, 68, 0.10);
+            border: 1px solid rgba(239, 68, 68, 0.25);
+            color: #fca5a5;
+        }
+
+        .alert-success {
+            background: rgba(34, 197, 94, 0.10);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            color: #86efac;
+        }
+
+        .security-note {
+            margin-top: 24px;
+            padding: 13px 15px;
+            border-radius: 10px;
+            background: #15121d;
+            border: 1px solid #292330;
+            color: #777282;
+            font-size: 11px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .security-note strong {
+            color: #a78bfa;
+        }
+
+        @media (max-width: 500px) {
+            .verify-card {
+                padding: 28px 22px;
+            }
+
+            .otp-input {
+                font-size: 21px;
+                letter-spacing: 7px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="verify-container">
+
+    <div class="verify-card">
+
+        <!-- Logo -->
+        <div class="logo">
+            <div class="logo-icon">📄</div>
+            <h1>ResumeAI</h1>
+            <p>AI-Powered Resume Analysis</p>
+        </div>
+
+        <!-- Heading -->
+        <div class="verify-message">
+            <h2>Verify Your Email</h2>
+
+            <p>
+                We have sent a 6-digit verification code to
+            </p>
+
+            <div class="email-display">
+                {{ email }}
+            </div>
+        </div>
+
+        <!-- Error Message -->
+        {% if error %}
+            <div class="alert alert-error">
+                {{ error }}
+            </div>
+        {% endif %}
+
+        <!-- Success Message -->
+        {% if success %}
+            <div class="alert alert-success">
+                {{ success }}
+            </div>
+        {% endif %}
+
+        <!-- OTP Form -->
+        <form action="{{ url_for('verify_otp') }}" method="POST">
+
+            <div class="form-group">
+
+                <label for="otp">
+                    Enter Verification Code
+                </label>
+
+                <input
+                    type="text"
+                    id="otp"
+                    name="otp"
+                    class="otp-input"
+                    placeholder="000000"
+                    maxlength="6"
+                    minlength="6"
+                    pattern="[0-9]{6}"
+                    inputmode="numeric"
+                    autocomplete="one-time-code"
+                    required
+                >
+
+            </div>
+
+            <button type="submit" class="verify-button">
+                ✓ Verify Email
+            </button>
+
+        </form>
+
+        <!-- Resend OTP -->
+        <div class="resend-section">
+
+            <p>
+                Didn't receive the verification code?
+            </p>
+
+            <form action="{{ url_for('resend_otp') }}" method="POST">
+
+                <button type="submit" class="resend-button">
+                    ↻ Resend OTP
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- Security Note -->
+        <div class="security-note">
+            <strong>🔒 Security:</strong>
+            Your verification code is valid for 5 minutes.
+            Never share your OTP with anyone.
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    const otpInput = document.getElementById("otp");
+
+    otpInput.addEventListener("input", function () {
+        this.value = this.value.replace(/[^0-9]/g, "");
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | ResumeAI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+
+        .auth-page {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px 20px;
+            box-sizing: border-box;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 440px;
+
+            padding: 36px;
+
+            background: #101015;
+
+            border: 1px solid #292330;
+            border-radius: 20px;
+
+            box-sizing: border-box;
+        }
+
+        .auth-logo {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .auth-logo h1 {
+            margin: 0 0 8px;
+
+            font-size: 28px;
+
+            color: #f4f1fa;
+        }
+
+        .auth-logo p {
+            margin: 0;
+
+            color: #8f8ba0;
+
+            font-size: 13px;
+        }
+
+        .auth-form {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+        .form-group label {
+            color: #c4bfd2;
+
+            font-size: 13px;
+
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+
+            padding: 13px 14px;
+
+            box-sizing: border-box;
+
+            background: #121217;
+
+            border: 1px solid #30283b;
+
+            border-radius: 10px;
+
+            color: white;
+
+            font-size: 14px;
+
+            outline: none;
+        }
+
+        .form-group input:focus {
+
+            border-color: #8b5cf6;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(139, 92, 246, 0.10);
+        }
+
+        .form-group input::placeholder {
+            color: #6f6a7c;
+        }
+
+        .login-button {
+
+            width: 100%;
+
+            margin-top: 6px;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #8b5cf6;
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            opacity: 0.9;
+        }
+
+        .auth-footer {
+
+            margin-top: 24px;
+
+            text-align: center;
+
+            color: #8f8ba0;
+
+            font-size: 13px;
+        }
+
+        .auth-footer a {
+
+            color: #a78bfa;
+
+            text-decoration: none;
+
+            font-weight: 600;
+        }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+
+            margin-bottom: 18px;
+
+            padding: 12px 14px;
+
+            border-radius: 10px;
+
+            background: rgba(239, 68, 68, 0.08);
+
+            border: 1px solid rgba(239, 68, 68, 0.25);
+
+            color: #fca5a5;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+        .success-message {
+
+            margin-bottom: 18px;
+
+            padding: 12px 14px;
+
+            border-radius: 10px;
+
+            background: rgba(34, 197, 94, 0.08);
+
+            border: 1px solid rgba(34, 197, 94, 0.25);
+
+            color: #86efac;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+        .security-note {
+
+            margin-top: 20px;
+
+            padding: 12px 14px;
+
+            border-radius: 10px;
+
+            background: #15121d;
+
+            border: 1px solid #292330;
+
+            color: #8f8ba0;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+        }
+
+        .security-note strong {
+            color: #a78bfa;
+        }
+
+        @media (max-width: 500px) {
+
+            .auth-card {
+                padding: 26px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="auth-page">
+
+
+    <div class="auth-card">
+
+
+        <!-- LOGO -->
+
+        <div class="auth-logo">
+
+            <h1>🚀 ResumeAI</h1>
+
+            <p>
+                Welcome back. Continue your career journey.
+            </p>
+
+        </div>
+
+
+        <!-- ERROR -->
+
+        {% if error %}
+
+        <div class="error-message">
+
+            ⚠️ {{ error }}
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- SUCCESS -->
+
+        {% if success %}
+
+        <div class="success-message">
+
+            ✓ {{ success }}
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- LOGIN FORM -->
+
+        <form
+            action="/login"
+            method="POST"
+            class="auth-form"
+        >
+
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-button"
+            >
+
+                Login to ResumeAI
+
+            </button>
+
+
+        </form>
+
+
+        <!-- SECURITY -->
+
+        <div class="security-note">
+
+            🔐 Your account is protected with
+            password authentication and email OTP verification.
+
+        </div>
+
+
+        <!-- REGISTER -->
+
+        <div class="auth-footer">
+
+            Don't have an account?
+
+            <a href="/register">
+                Create Account
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

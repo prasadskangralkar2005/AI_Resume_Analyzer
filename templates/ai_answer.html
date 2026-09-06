@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Career Assistant | ResumeAI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+
+        body {
+            background: #0b0a0f;
+            color: #f4f1fa;
+        }
+
+        .ai-answer-page {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        .ai-answer-header {
+            margin-bottom: 30px;
+        }
+
+        .ai-answer-header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .ai-answer-header p {
+            color: #8f8ba0;
+            font-size: 14px;
+        }
+
+        .question-card {
+            padding: 22px;
+            margin-bottom: 24px;
+            border-radius: 16px;
+            background: #121217;
+            border: 1px solid #292330;
+        }
+
+        .question-label {
+            color: #a78bfa;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .question-text {
+            color: #ffffff;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .answer-card {
+            padding: 30px;
+            border-radius: 18px;
+            background: #121217;
+            border: 1px solid #292330;
+        }
+
+        .answer-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .answer-icon {
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 13px;
+            background: rgba(139, 92, 246, 0.14);
+            border: 1px solid rgba(139, 92, 246, 0.35);
+            font-size: 22px;
+        }
+
+        .answer-header h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .answer-content {
+            color: #c8c3d4;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .answer-content h1,
+        .answer-content h2,
+        .answer-content h3 {
+            color: #f4f1fa;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        .answer-content h2 {
+            font-size: 18px;
+        }
+
+        .answer-content h3 {
+            font-size: 15px;
+        }
+
+        .answer-content strong {
+            color: #ffffff;
+        }
+
+        .answer-content ul,
+        .answer-content ol {
+            margin: 10px 0 18px 22px;
+        }
+
+        .answer-content li {
+            margin-bottom: 8px;
+        }
+
+        .answer-content li::marker {
+            color: #8b5cf6;
+        }
+
+        .answer-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .answer-content th {
+            text-align: left;
+            padding: 12px;
+            background: #191521;
+            color: #a78bfa;
+            border: 1px solid #30283b;
+        }
+
+        .answer-content td {
+            padding: 12px;
+            border: 1px solid #30283b;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 20px;
+            border-radius: 10px;
+            background: #8b5cf6;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .back-button:hover {
+            opacity: 0.9;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="ai-answer-page">
+
+    <div class="ai-answer-header">
+
+        <h1>🤖 AI Career Assistant</h1>
+
+        <p>
+            Personalized answer generated using your resume
+            and selected job description.
+        </p>
+
+    </div>
+
+
+    <div class="question-card">
+
+        <div class="question-label">
+            Your Question
+        </div>
+
+        <div class="question-text">
+            {{ question }}
+        </div>
+
+    </div>
+
+
+    <div class="answer-card">
+
+        <div class="answer-header">
+
+            <div class="answer-icon">
+                🤖
+            </div>
+
+            <div>
+                <h2>Groq AI Answer</h2>
+            </div>
+
+        </div>
+
+
+        <div id="ai-answer-content"
+             class="answer-content">
+
+            {{ answer }}
+
+        </div>
+
+    </div>
+
+
+    <a href="javascript:history.back()"
+       class="back-button">
+
+        ← Back to Results
+
+    </a>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const answer =
+        document.getElementById("ai-answer-content");
+
+    if (!answer) {
+        return;
+    }
+
+    const markdown = answer.textContent;
+
+    answer.innerHTML = marked.parse(markdown);
+
+});
+
+</script>
+
+
+</body>
+
+</html>

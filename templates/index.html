@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ResumeAI — AI Resume Analyzer</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Resume<span>AI</span>
+        </div>
+
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How it works</a>
+            <a href="#">Login</a>
+            <a href="#" class="nav-button">Get Started</a>
+        </div>
+
+    </nav>
+
+
+    <!-- Hero -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                ✦ AI-Powered Career Intelligence
+            </div>
+
+            <h1>
+                Your resume.
+                <br>
+                <span>Smarter.</span>
+            </h1>
+
+            <p>
+                Analyze your resume, discover skill gaps,
+                and find out how well you match your dream job
+                using AI-powered insights.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="/upload" class="primary-button">
+    Analyze My Resume →
+</a>
+
+                <a href="#how-it-works" class="secondary-button">
+                    See How It Works
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Analysis Card -->
+
+        <div class="analysis-card">
+
+            <div class="card-header">
+
+                <div>
+                    <small>RESUME ANALYSIS</small>
+                    <h3>John Doe</h3>
+                </div>
+
+                <div class="score">
+                    87%
+                </div>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <div class="progress-label">
+                    <span>ATS Compatibility</span>
+                    <span>87%</span>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-fill"></div>
+                </div>
+
+            </div>
+
+
+            <div class="skills">
+
+                <div class="skill">
+                    <span>Python</span>
+                    <b>✓</b>
+                </div>
+
+                <div class="skill">
+                    <span>SQL</span>
+                    <b>✓</b>
+                </div>
+
+                <div class="skill missing">
+                    <span>Power BI</span>
+                    <b>!</b>
+                </div>
+
+            </div>
+
+
+            <div class="match">
+
+                <span>JOB MATCH</span>
+
+                <strong>
+                    92%
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Features -->
+
+    <section class="features" id="features">
+
+        <div class="section-heading">
+
+            <small>POWERFUL ANALYSIS</small>
+
+            <h2>
+                Everything you need to
+                <span>stand out.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ✦
+                </div>
+
+                <h3>AI Resume Analysis</h3>
+
+                <p>
+                    Understand how your resume performs
+                    against modern hiring requirements.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ◎
+                </div>
+
+                <h3>Job Matching</h3>
+
+                <p>
+                    Compare your resume with job descriptions
+                    and discover your compatibility score.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    ↗
+                </div>
+
+                <h3>Skill Gap Detection</h3>
+
+                <p>
+                    Discover missing skills and identify
+                    what you should learn next.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- How it works -->
+
+    <section class="how-it-works" id="how-it-works">
+
+        <div class="section-heading">
+
+            <small>HOW IT WORKS</small>
+
+            <h2>
+                From resume to
+                <span>career insight.</span>
+            </h2>
+
+        </div>
+
+
+        <div class="steps">
+
+            <div class="step">
+
+                <div class="step-number">
+                    01
+                </div>
+
+                <h3>Upload</h3>
+
+                <p>
+                    Upload your resume in PDF format.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    02
+                </div>
+
+                <h3>Analyze</h3>
+
+                <p>
+                    Our NLP and ML engine analyzes your resume.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    03
+                </div>
+
+                <h3>Improve</h3>
+
+                <p>
+                    Get personalized recommendations
+                    and job matching insights.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="logo">
+            Resume<span>AI</span>
+        </div>
+
+        <p>
+            AI-powered career intelligence.
+        </p>
+
+        <p class="copyright">
+            © 2026 ResumeAI
+        </p>
+
+    </footer>
+
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <!-- =========================================================
+     GROQ AI CAREER ASSISTANT
+========================================================= -->
+
+<section class="groq-ai-section">
+
+    <div class="groq-ai-header">
+
+        <div class="groq-ai-header-left">
+
+            <div class="groq-ai-icon">
+                🤖
+            </div>
+
+            <div>
+
+                <h2>
+                    Groq AI Career Assistant
+                </h2>
+
+                <p>
+                    AI-powered analysis of your resume against the selected job description.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="groq-ai-badge">
+            POWERED BY GROQ AI
+        </div>
+
+    </div>
+
+
+    <div class="groq-ai-content">
+
+        {% if ai_analysis %}
+
+            <pre>{{ ai_analysis }}</pre>
+
+        {% else %}
+
+            <p style="color:#8f8ba0;">
+                AI analysis is currently unavailable.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <div class="groq-ai-footer">
+
+        <strong>✨ AI Insight:</strong>
+        This analysis is generated from your uploaded resume and the job description.
+        Always review AI suggestions and keep your resume truthful.
+
+    </div>
+
+</section>
+
+</body>
+
+</html>
