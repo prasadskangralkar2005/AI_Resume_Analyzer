@@ -126,35 +126,31 @@ AI\_Resume\_Analyzer/
 
 └── README.md
 
-&#x20;               Resume Upload
+## 🔄 How the System Works
 
-&#x20;                     ↓
+1. **Resume Upload**
+   - User uploads their resume.
 
-&#x20;               Resume Analysis
+2. **Resume Analysis**
+   - The system extracts and analyzes the resume content.
 
-&#x20;                     ↓
+3. **Skill Extraction**
+   - Relevant technical and professional skills are identified.
 
-&#x20;             Text / Skill Extraction
+4. **ATS Analysis**
+   - The resume is evaluated for ATS compatibility.
 
-&#x20;                     ↓
+5. **Resume-Job Matching**
+   - Resume skills are compared with job requirements.
 
-&#x20;                ATS Analysis
+6. **Skill Gap Analysis**
+   - Missing or insufficient skills are identified.
 
-&#x20;                     ↓
+7. **Resume Improvement**
+   - Personalized suggestions are provided to improve the resume.
 
-&#x20;            Resume-Job Matching
-
-&#x20;                     ↓
-
-&#x20;               Skill Gap Analysis
-
-&#x20;                     ↓
-
-&#x20;          Resume Improvement Suggestions
-
-&#x20;                     ↓
-
-&#x20;               Career Assistance
+8. **Career Assistance**
+   - The AI assistant provides career and resume-related guidance.
 
 
 
