@@ -214,3 +214,11 @@ Provides suggestions to improve resume content, structure, and job relevance.
 
 Provides AI-based assistance related to resumes, skills, and career preparation.
 
+## 📸 Screenshots
+
+### 🏠 Home Page
+
+skill-analysis.png
+login.png
+dashboard.png
+ats-analysis.png
